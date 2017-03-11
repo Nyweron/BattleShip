@@ -1,0 +1,55 @@
+html {
+    background-color: #323430;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+}
+
+tr,
+th,
+td {
+    width: 40px;
+    height: 40px;
+    background-color: yellowgreen;
+}
+
+.containeBroard {
+    margin-left: 15px;
+}
+
+.cell {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 40px;
+}
+
+.cellHitShip {
+    background: rgb(255, 18, 27);
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.cellMiss {
+    background: rgb(64, 64, 64);
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.cellStopShip {
+    background: rgb(1, 49, 144);
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
