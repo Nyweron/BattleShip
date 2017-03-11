@@ -16,9 +16,224 @@
 <body>
 
 
-    <script src="JSScript/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="JSScript/bootstrap/tether.min.js"></script>
-    <script src="JSScript/bootstrap/bootstrap.min.js"></script>
+    <div class="col-xs-6" style="background-color:gray">
+        <div class="row">
+            <table id="tableBoard">
+                <tr>
+                    <th></th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                </tr>
+                <tr>
+                    <th>A</th>
+                    <th id="00"></th>
+                    <th id="01"></th>
+                    <th id="02"></th>
+                    <th id="03"></th>
+                    <th id="04"></th>
+                    <th id="05"></th>
+                    <th id="06"></th>
+                    <th id="07"></th>
+                    <th id="08"></th>
+                    <th id="09"></th>
+                </tr>
+                <tr>
+
+                    <th>B</th>
+                    <th id="10"></th>
+                    <th id="11"></th>
+                    <th id="12"></th>
+                    <th id="13"></th>
+                    <th id="14"></th>
+                    <th id="15"></th>
+                    <th id="16"></th>
+                    <th id="17"></th>
+                    <th id="18"></th>
+                    <th id="19"></th>
+                </tr>
+                <tr>
+                    <th>C</th>
+                    <th id="20"></th>
+                    <th id="21"></th>
+                    <th id="22"></th>
+                    <th id="23"></th>
+                    <th id="24"></th>
+                    <th id="25"></th>
+                    <th id="26"></th>
+                    <th id="27"></th>
+                    <th id="28"></th>
+                    <th id="29"></th>
+                </tr>
+                <tr>
+                    <th>D</th>
+                    <th id="30"></th>
+                    <th id="31"></th>
+                    <th id="32"></th>
+                    <th id="33"></th>
+                    <th id="34"></th>
+                    <th id="35"></th>
+                    <th id="36"></th>
+                    <th id="37"></th>
+                    <th id="38"></th>
+                    <th id="39"></th>
+                </tr>
+                <tr>
+                    <th>E</th>
+                    <th id="40"></th>
+                    <th id="41"></th>
+                    <th id="42"></th>
+                    <th id="43"></th>
+                    <th id="44"></th>
+                    <th id="45"></th>
+                    <th id="46"></th>
+                    <th id="47"></th>
+                    <th id="48"></th>
+                    <th id="49"></th>
+                </tr>
+                <tr>
+                    <th>F</th>
+                    <th id="50"></th>
+                    <th id="51"></th>
+                    <th id="52"></th>
+                    <th id="53"></th>
+                    <th id="54"></th>
+                    <th id="55"></th>
+                    <th id="56"></th>
+                    <th id="57"></th>
+                    <th id="58"></th>
+                    <th id="59"></th>
+                </tr>
+                <tr>
+                    <th>G</th>
+                    <th id="60"></th>
+                    <th id="61"></th>
+                    <th id="62"></th>
+                    <th id="63"></th>
+                    <th id="64"></th>
+                    <th id="65"></th>
+                    <th id="66"></th>
+                    <th id="67"></th>
+                    <th id="68"></th>
+                    <th id="69"></th>
+                </tr>
+                <tr>
+                    <th>H</th>
+                    <th id="70"></th>
+                    <th id="71"></th>
+                    <th id="72"></th>
+                    <th id="73"></th>
+                    <th id="74"></th>
+                    <th id="75"></th>
+                    <th id="76"></th>
+                    <th id="77"></th>
+                    <th id="78"></th>
+                    <th id="79"></th>
+                </tr>
+                <tr>
+                    <th>I</th>
+                    <th id="80"></th>
+                    <th id="81"></th>
+                    <th id="82"></th>
+                    <th id="83"></th>
+                    <th id="84"></th>
+                    <th id="85"></th>
+                    <th id="86"></th>
+                    <th id="87"></th>
+                    <th id="88"></th>
+                    <th id="89"></th>
+                </tr>
+                <tr>
+                    <th>J</th>
+                    <th id="90"></th>
+                    <th id="91"></th>
+                    <th id="92"></th>
+                    <th id="93"></th>
+                    <th id="94"></th>
+                    <th id="95"></th>
+                    <th id="96"></th>
+                    <th id="97"></th>
+                    <th id="98"></th>
+                    <th id="99"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="containeBroard">
+                <div class="row">
+                    <br />
+
+                    <form action="javascript:shipController.checkValToFire(valToFire);">
+                        <input type="text" name="value" placeholder="A1" id="valToFire" maxlength="2">
+                        <input type="submit" value="Ognia!" id="fireBtn">
+                    </form>
+                    <br />
+
+                    <br />
+                </div>
+                <div class="row" style="color:white">
+                    <br/> Komputer losuje statki, ja strzelam<br/> ilość: nazwa statku<br/> 1: pięciomasztowiec<br/> 1: czteromasztowiec<br/> 2: trzymasztowce<br/> 3: dwumasztowce<br/> 4: jednomasztowce
+                    <br/>
+
+                    <div class="col-xs-6 col-sm-1">
+                        <div class="cellHitShip"></div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2">
+                        <p>- Trafiony</p>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-1">
+                        <div class="cellMiss"></div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2">
+                        <p>- Pudło</p>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-1">
+                        <div class="cellStopShip"></div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-5">
+                        <p>- Obszar w którym statek nie może się znaleźć</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row" style="color:white">
+                    <div id="messageArea"></div>
+                    <div id="winInfo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="JSScripts/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="JSScripts/bootstrap/tether.min.js"></script>
+    <script src="JSScripts/bootstrap/bootstrap.min.js"></script>
+
+    <script src="Model/computerShipModel.js"></script>
+    <script src="Controller/computerShipController.js"></script>
+
+    <script src="Model/shipModel.js"></script>
+    <script src="View/shipView.js"></script>
+
+    <script src="Controller/baseController.js"></script>
+
+
 </body>
 
 </html>
