@@ -258,6 +258,7 @@ paket-files/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+
 # ignore a file type
 *.json
 
