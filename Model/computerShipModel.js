@@ -45,13 +45,7 @@ var computerShipModel = {
 
         let newShipLoc = baseModel.checkNewShipsWithExistsShips(newShipLocations, this.ships);
 
-        if (newShipLoc == 1) {
-            this.generateShip(i);
-        }
-
-        console.log(newShipLoc);
-
-        return newShipLoc.sort();
+        return newShipLoc == 1 ? this.generateShip(i) : newShipLoc;
     },
 
 
