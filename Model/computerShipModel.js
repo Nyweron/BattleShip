@@ -11,6 +11,7 @@ var computerShipModel = {
             } while (y != true);
 
             this.ships[i].location = location;
+
             this.ships[i].locationAroundShip = dots;
 
             shipView.displayShip(1, location);
@@ -42,7 +43,15 @@ var computerShipModel = {
             }
         }
 
-        return newShipLocations.sort();
+        let newShipLoc = baseModel.checkNewShipsWithExistsShips(newShipLocations, this.ships);
+
+        if (newShipLoc == 1) {
+            this.generateShip(i);
+        }
+
+        console.log(newShipLoc);
+
+        return newShipLoc.sort();
     },
 
 
