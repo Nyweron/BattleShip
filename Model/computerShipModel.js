@@ -8,6 +8,9 @@ var computerShipModel = {
                 y = true;
                 location = this.generateShip(i);
 
+                //generate dots
+                //check collision
+
             } while (y != true);
 
             this.ships[i].location = location;

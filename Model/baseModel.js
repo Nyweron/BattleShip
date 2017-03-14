@@ -16,4 +16,8 @@ var baseModel = {
         return newShipLocations;
     },
 
+    generateDots: function(location, i, dirctions) {
+
+    }
+
 }
