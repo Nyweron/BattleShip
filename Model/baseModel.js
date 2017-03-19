@@ -69,7 +69,526 @@ var baseModel = {
         let newShipDotsLocations = [];
         let k = 0;
 
+        if (location.length == 5) {
+            for (var j = 0; j < location.length; j++) {
+                var row = parseInt(location[j].charAt(0));
+                var col = parseInt(location[j].charAt(1));
+                var lowerRow = parseInt(row) - 1;
+                var higherRow = parseInt(row) + 1;
+                var lowerCol = parseInt(col) - 1;
+                var higherCol = parseInt(col) + 1;
 
+                if (directions[i] === 0) { //row poziom
+                    if (k === 0) {
+                        if (row === 0 && col === 0) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && lowerRow >= 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row === 0 && col === 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 0 && lowerRow >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (higherCol <= 9 && lowerRow >= 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9 && row === 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    } else if (k === 1) {
+                        if (col === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    } else if (k === 2) {
+                        if (col === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    } else if (k === 3) {
+                        if (col === 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    } else if (k === 4) {
+                        if (col === 0 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 9 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    }
+                } else {
+                    if (k === 0) {
+                        if (row === 0 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (col === 0 && row === 0) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 0 && row === 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+
+                    } else if (k === 1) {
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 2) {
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 3) {
+                        if (col === 0 && row === 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 4) {
+                        if (col === 0 && row === 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row === 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 9 && higherCol <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                        }
+                        if (col === 9 && lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    }
+
+                }
+                k++;
+            }
+        }
+
+        if (location.length == 4) {
+            for (var j = 0; j < location.length; j++) {
+                var row = parseInt(location[j].charAt(0));
+                var col = parseInt(location[j].charAt(1));
+                var lowerRow = parseInt(row) - 1;
+                var higherRow = parseInt(row) + 1;
+                var lowerCol = parseInt(col) - 1;
+                var higherCol = parseInt(col) + 1;
+
+                if (directions[i] === 0) { //row poziom
+                    if (k === 0) {
+                        if (col === 0 && row === 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerRow >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && lowerRow >= 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 9 && row === 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (row === 0 && higherCol <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerCol >= 0 && higherCol <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                        }
+
+                    } else if (k === 1) {
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 9 && row >= 0 && row <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                    } else if (k === 2) {
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 0 && row >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && row >= 0 && row <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                    } else if (k === 3) {
+                        if (col === 0 && row >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 0 && row === 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && row >= 0 && row <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 9 && row >= 0 && row <= 9 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (higherRow <= 9 && higherCol <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && higherCol <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                    }
+                } else {
+                    if (k === 0) {
+                        if (col === 0 && row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 0 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (row === 9 && lowerRow >= 0 & lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row === 9 && col === 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (lowerCol >= 0 && lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+
+                        }
+                    } else if (k === 1) {
+                        if (row === 0 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 2) {
+                        if (row === 0 && col === 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 3) {
+                        if (col === 0 && row >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && col === 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                        }
+                        if (col === 9 && lowerRow >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    }
+                }
+                k++;
+            }
+        }
+
+        if (location.length == 3) {
+            for (var j = 0; j < location.length; j++) {
+                var row = parseInt(location[j].charAt(0));
+                var col = parseInt(location[j].charAt(1));
+                var lowerRow = parseInt(row) - 1;
+                var higherRow = parseInt(row) + 1;
+                var lowerCol = parseInt(col) - 1;
+                var higherCol = parseInt(col) + 1;
+
+                if (directions[i] === 0) { //row poziom
+                    if (k === 0) {
+                        if (col === 0 && row === 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && row === 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 0 && row >= 0 && row <= 9 && higherCol <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                        }
+                        if (col === 9 && row <= 9 && lowerCol >= 0 && lowerRow >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (lowerRow >= 0 && lowerCol >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                    } else if (k === 1) {
+                        if (col === 0 && row >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && row >= 0 && lowerCol >= 0 && row <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    } else if (k === 2) {
+                        if (col === 0 && row >= 0 && higherRow <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 0 && row >= 0 && row <= 9 && higherCol <= 9) {
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (col === 9 && row >= 0 && lowerCol >= 0 && row <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 9 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row >= 0 && row <= 9 && higherCol <= 9 && lowerCol >= 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                        }
+                        if (row <= 9 && row >= 0 && higherCol <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                    }
+                } else {
+                    if (k === 0) {
+                        if (col === 0 && row === 0 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 0 && higherRow <= 9 && lowerCol >= 0) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (row === 9 && lowerRow >= 0 && lowerCol >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                        }
+                        if (col === 0 && row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (lowerRow >= 0 && higherRow <= 9 && lowerCol >= 0 && col <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + lowerCol);
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(row + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + lowerCol);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (col === 0 && higherRow <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                    } else if (k === 1) {
+                        if (row === 0 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row >= 0 && row <= 9 && higherRow <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+
+                    } else if (k === 2) {
+                        if (row === 0 && higherCol <= 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row === 0 && col === 9 && higherRow <= 9) {
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row === 9 && col === 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                        }
+                        if (row === 9 && lowerRow >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+                        if (row >= 0 && row <= 9 && higherRow <= 9 && lowerRow >= 0) {
+                            newShipDotsLocations.push(lowerRow + "" + col);
+                            newShipDotsLocations.push(higherRow + "" + col);
+                        }
+                        if (row >= 0 && row <= 9 && higherRow <= 9 && lowerRow >= 0 && higherCol <= 9) {
+                            newShipDotsLocations.push(lowerRow + "" + higherCol);
+                            newShipDotsLocations.push(higherRow + "" + higherCol);
+                            newShipDotsLocations.push(row + "" + higherCol);
+                        }
+
+                    }
+                }
+                k++;
+            }
+        }
 
         if (location.length == 2) {
             for (var j = 0; j < location.length; j++) {
