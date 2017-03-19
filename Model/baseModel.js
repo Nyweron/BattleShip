@@ -24,6 +24,47 @@ var baseModel = {
         return result;
     },
 
+    collision: function(location, dots, ships) {
+
+        let loc = location;
+        let dot = dots;
+        let firstShip = ships[0];
+
+        for (let i = 0; i < ships.length; i++) {
+            firstShip = ships[i];
+            if (firstShip.location[0] == "") { continue; }
+
+            if (this.checkDotsAroundsShipWithNewLocationShip(firstShip, loc) == false) {
+                return false;
+            }
+
+            if (this.checkAllShipsWithNewDots(firstShip, dot, i) == false) {
+                return false;
+            }
+        }
+        return true;
+    },
+
+    checkDotsAroundsShipWithNewLocationShip: function(ship, loc) {
+        for (let i = 0; i < ship.locationAroundShip.length; i++) {
+            for (let j = 0; j < loc.length; j++) {
+                if (ship.locationAroundShip[i] == loc[j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    },
+
+    checkAllShipsWithNewDots: function(ship, dot, iterator) {
+        for (let i = 0; i < dot.length; i++) {
+            if (ship.location[iterator] == dot[i]) {
+                return false;
+            }
+        }
+        return true;
+    },
+
     generateDots: function(location, i, directions) {
         let newShipDotsLocations = [];
         let k = 0;

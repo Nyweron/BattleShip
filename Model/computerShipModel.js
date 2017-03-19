@@ -5,12 +5,13 @@ var computerShipModel = {
         for (let i = 0; i < this.numShips; i++) {
             let y = false;
             do {
-                y = true;
+                y = false;
                 location = this.generateShip(i);
-
                 dots = baseModel.generateDots(location, i, this.directions);
-                //generate dots
-                //check collision
+
+                if (baseModel.collision(location, dots, this.ships) == true) {
+                    y = true;
+                }
 
             } while (y != true);
 
