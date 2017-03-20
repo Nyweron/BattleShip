@@ -1,10 +1,7 @@
 var playerController = {
 
     checkLengthFire: function(valueToFire) {
-        if (valueToFire.value.length > 3) {
-            return true;
-        }
-        return false;
+        (valueToFire.value.length > 3) ? true: false;
     },
 
     checkValueToFire: function(valueToFire) {
