@@ -65,6 +65,12 @@ var baseModel = {
         return true;
     },
 
+    changeLetterToDigit: function(letter) {
+        let point = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+        let index = point.findIndex((x) => x === letter.toUpperCase());
+        return (index >= 0 & index <= 9) ? index : -1;
+    },
+
     generateDots: function(location, i, directions) {
         let newShipDotsLocations = [];
         let k = 0;

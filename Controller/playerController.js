@@ -22,5 +22,24 @@ var playerController = {
             shipView.displayMsgHitOrMisst(-1, "messageArea");
             return false;
         }
+
+        let regexLetter = /^[a-jA-J]+$/;
+        let regexDigit = /[0-9]/g;
+
+        if (regexLetter.test(charValue)) {
+            if (digitValue.match(regexDigit)) {
+                let newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
+                if (newTarget === -1) {
+                    return false;
+                }
+            } else {
+                shipView.displayMsgHitOrMisst(-1, "messageArea");
+                return false;
+            }
+        } else {
+            shipView.displayMsgHitOrMisst(-1, "messageArea");
+            return false;
+        }
+
     },
 }
