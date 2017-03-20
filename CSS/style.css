@@ -53,3 +53,31 @@ td {
     height: 40px;
     border: 1px solid black;
 }
+
+@media (min-width: 992px) {
+    .row {
+        margin-right: -8px;
+        margin-left: -15px;
+    }
+}
+
+@media (min-width:768px) {
+    .row {
+        margin-right: -8px;
+        margin-left: -15px;
+    }
+}
+
+@media (min-width:576px) {
+    .row {
+        margin-right: -8px;
+        margin-left: -15px;
+    }
+}
+
+@media (min-width:200px) {
+    .row {
+        margin-right: -8px;
+        margin-left: -15px;
+    }
+}

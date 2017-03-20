@@ -12,4 +12,33 @@ var shipView = {
             }
         }
     },
+
+    displayMsgHitOrMisst: function(val, divID) {
+        if (val === 1) {
+            document.getElementById(divID).innerHTML = "TRAFIONY";
+            document.getElementById(divID).style.color = "Green";
+        } else if (val === 2) {
+            document.getElementById(divID).innerHTML = "ZATOPIŁEŚ, WSZYSTKIE STATKI! <br /> Koniec Gry <br /> Ilość strzałów: " + shipModel.shoots.length;
+            document.getElementById(divID).style.color = "Green";
+        } else if (val === 3) {
+            document.getElementById(divID).innerHTML = "ZATOPIONY!";
+            document.getElementById(divID).style.color = "Green";
+        } else if (val === 4) {
+            document.getElementById(divID).innerHTML = "Oddałeś strzał już w tą komórkę. Wybierz inny cel!";
+            document.getElementById(divID).style.color = "White";
+        } else if (val === -1) {
+            document.getElementById(divID).innerHTML = "Podaj literę oraz liczbę. <br /> Literę od A do J.<br /> Liczbę od 0 do 9";
+            document.getElementById(divID).style.color = "White";
+        } else if (val === -2) {
+            document.getElementById(divID).innerHTML = "PUDŁO";
+            document.getElementById(divID).style.color = '#404040'; //dark grey
+        } else if (val === -3) {
+            document.getElementById(divID).innerHTML = "";
+        } else if (val === -4) {
+            document.getElementById(divID).value = "";
+        } else {
+            document.getElementById(divID).value = "ERROR, coś poszło nie tak :(";
+        }
+    },
+
 }
