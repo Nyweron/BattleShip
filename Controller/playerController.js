@@ -38,6 +38,10 @@ const playerController = {
                 if (playerModel.rememberAllShotsPlayer(newTarget) === false) {
                     return false;
                 }
+
+                const info = computerShipController.checkPlayerFireWithComputerShips(newTarget);
+                shipView.displayMsgHitOrMisst(info, "messageArea");
+                //display cell on boards when player fire
             } else {
                 shipView.displayMsgHitOrMisst(-1, "messageArea");
                 return false;
@@ -47,7 +51,7 @@ const playerController = {
             return false;
         }
 
-        let info = shipModel.checkFireWithShips(newTarget);
+
 
 
     },
