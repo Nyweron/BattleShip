@@ -15,7 +15,7 @@ const computerShipController = {
                 if (fire === computerShipModel.ships[i].location[j]) {
                     this.setShootedComputerShip(i);
                     if (this.computerShipIsSink(i) === true) {
-                        //Display dots when ship is sink
+                        this.displayDotsWhenComputerShipIsSink(i);
                         return 3;
                     }
                     return 1;
@@ -41,7 +41,7 @@ const computerShipController = {
                 return false;
             }
         }
-        computerShipModel.allComputerShipsSink();
+        this.allComputerShipsSink();
         return true;
     },
 
@@ -56,7 +56,7 @@ const computerShipController = {
     },
 
     allComputerShipsSink: function() {
-        const cntAllHits = computerShipModel.cntAllComputerShipsHits();
+        const cntAllHits = this.cntAllComputerShipsHits();
         let cntAllHitsSinkShips = 0;
 
         for (let i = 0; i < computerShipModel.ships.length; i++) {
@@ -71,5 +71,12 @@ const computerShipController = {
             shipView.displayMsgHitOrMisst(2, "winInfo")
         }
     },
+
+    displayDotsWhenComputerShipIsSink: function(i) {
+        for (let j = 0; j < computerShipModel.ships[i].locationAroundShip.length; j++) {
+            shipView.displayShipOneCell(2, computerShipModel.ships[i].locationAroundShip[j]);
+        }
+    },
+
 
 }

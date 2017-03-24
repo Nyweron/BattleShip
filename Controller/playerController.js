@@ -41,7 +41,8 @@ const playerController = {
 
                 const info = computerShipController.checkPlayerFireWithComputerShips(newTarget);
                 shipView.displayMsgHitOrMisst(info, "messageArea");
-                //display cell on boards when player fire
+                shipView.displayShipOneCell(info, newTarget);
+
             } else {
                 shipView.displayMsgHitOrMisst(-1, "messageArea");
                 return false;
