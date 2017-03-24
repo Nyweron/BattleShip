@@ -1,4 +1,4 @@
-var computerShipController = {
+const computerShipController = {
     init: function() {
         computerShipModel.boardSize = 10;
         computerShipModel.ships = shipModel.actuallyShip();

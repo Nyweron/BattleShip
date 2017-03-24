@@ -1,6 +1,7 @@
-var baseController = {
+const baseController = {
     run: function() {
         computerShipController.init();
+        playerController.init();
     },
 }
 

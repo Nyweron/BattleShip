@@ -1,7 +1,13 @@
-var playerController = {
+const playerController = {
+
+    init: function() {
+        playerModel.allRememberedShoots = [];
+    },
+
+
 
     checkLengthFire: function(valueToFire) {
-        (valueToFire.value.length > 3) ? true: false;
+        return (valueToFire.value.length > 3) ? true : false;
     },
 
     checkValueToFire: function(valueToFire) {
@@ -25,8 +31,11 @@ var playerController = {
 
         if (regexLetter.test(charValue)) {
             if (digitValue.match(regexDigit)) {
-                let newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
+                const newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
                 if (newTarget === -1) {
+                    return false;
+                }
+                if (playerModel.rememberAllShotsPlayer(newTarget) === false) {
                     return false;
                 }
             } else {
@@ -38,5 +47,11 @@ var playerController = {
             return false;
         }
 
+        let info = shipModel.checkFireWithShips(newTarget);
+
+
     },
+
+
+
 }

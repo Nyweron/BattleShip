@@ -1,4 +1,4 @@
-var shipModel = {
+const shipModel = {
 
     actuallyShip: function() {
         var ships = [
