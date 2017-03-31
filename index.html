@@ -217,7 +217,199 @@
     </div>
 
 
+    <div class="col-xs-6" style="background-color:#6c6036">
+        <div class="row">
+            <table id="tableBoard2">
+                <tr>
+                    <th></th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                </tr>
+                <tr>
+                    <th>A</th>
+                    <th id="001"></th>
+                    <th id="011"></th>
+                    <th id="021"></th>
+                    <th id="031"></th>
+                    <th id="041"></th>
+                    <th id="051"></th>
+                    <th id="061"></th>
+                    <th id="071"></th>
+                    <th id="081"></th>
+                    <th id="091"></th>
+                </tr>
+                <tr>
 
+                    <th>B</th>
+                    <th id="101"></th>
+                    <th id="111"></th>
+                    <th id="121"></th>
+                    <th id="131"></th>
+                    <th id="141"></th>
+                    <th id="151"></th>
+                    <th id="161"></th>
+                    <th id="171"></th>
+                    <th id="181"></th>
+                    <th id="191"></th>
+                </tr>
+                <tr>
+                    <th>C</th>
+                    <th id="201"></th>
+                    <th id="211"></th>
+                    <th id="221"></th>
+                    <th id="231"></th>
+                    <th id="241"></th>
+                    <th id="251"></th>
+                    <th id="261"></th>
+                    <th id="271"></th>
+                    <th id="281"></th>
+                    <th id="291"></th>
+                </tr>
+                <tr>
+                    <th>D</th>
+                    <th id="301"></th>
+                    <th id="311"></th>
+                    <th id="321"></th>
+                    <th id="331"></th>
+                    <th id="341"></th>
+                    <th id="351"></th>
+                    <th id="361"></th>
+                    <th id="371"></th>
+                    <th id="381"></th>
+                    <th id="391"></th>
+                </tr>
+                <tr>
+                    <th>E</th>
+                    <th id="401"></th>
+                    <th id="411"></th>
+                    <th id="421"></th>
+                    <th id="431"></th>
+                    <th id="441"></th>
+                    <th id="451"></th>
+                    <th id="461"></th>
+                    <th id="471"></th>
+                    <th id="481"></th>
+                    <th id="491"></th>
+                </tr>
+                <tr>
+                    <th>F</th>
+                    <th id="501"></th>
+                    <th id="511"></th>
+                    <th id="521"></th>
+                    <th id="531"></th>
+                    <th id="541"></th>
+                    <th id="551"></th>
+                    <th id="561"></th>
+                    <th id="571"></th>
+                    <th id="581"></th>
+                    <th id="591"></th>
+                </tr>
+                <tr>
+                    <th>G</th>
+                    <th id="601"></th>
+                    <th id="611"></th>
+                    <th id="621"></th>
+                    <th id="631"></th>
+                    <th id="641"></th>
+                    <th id="651"></th>
+                    <th id="661"></th>
+                    <th id="671"></th>
+                    <th id="681"></th>
+                    <th id="691"></th>
+                </tr>
+                <tr>
+                    <th>H</th>
+                    <th id="701"></th>
+                    <th id="711"></th>
+                    <th id="721"></th>
+                    <th id="731"></th>
+                    <th id="741"></th>
+                    <th id="751"></th>
+                    <th id="761"></th>
+                    <th id="771"></th>
+                    <th id="781"></th>
+                    <th id="791"></th>
+                </tr>
+                <tr>
+                    <th>I</th>
+                    <th id="801"></th>
+                    <th id="811"></th>
+                    <th id="821"></th>
+                    <th id="831"></th>
+                    <th id="841"></th>
+                    <th id="851"></th>
+                    <th id="861"></th>
+                    <th id="871"></th>
+                    <th id="881"></th>
+                    <th id="891"></th>
+                </tr>
+                <tr>
+                    <th>J</th>
+                    <th id="901"></th>
+                    <th id="911"></th>
+                    <th id="921"></th>
+                    <th id="931"></th>
+                    <th id="941"></th>
+                    <th id="951"></th>
+                    <th id="961"></th>
+                    <th id="971"></th>
+                    <th id="981"></th>
+                    <th id="991"></th>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="containeBroard">
+            <div class="row">
+                <br />
+
+                <form action="javascript:playerController.checkShip(setShipCell, setLengthShip, verticalHorizontalShip);">
+                    <select id="setLengthShip" class="selectpicker"> 
+                        <option value="-1">Wybierz statek</option>
+                        <option value="1">1 - masztowiec</option>
+                        <option value="2">2 - masztowiec</option>
+                        <option value="3">3 - masztowiec</option>
+                        <option value="4">4 - masztowiec</option>
+                        <option value="5">5 - masztowiec</option>
+                    </select>
+                    <select id="verticalHorizontalShip" class="selectpicker"> 
+                        <option value="-1">Wybierz ułożenie</option>
+                        <option value="0">Pionowo |</option>
+                        <option value="1">Poziomo -</option>
+                    </select>
+                    <input type="text" name="value" placeholder="A1" id="setShipCell" maxlength="2">
+                    <input type="submit" value="Usaw statek" id="setShipBtn">
+                </form>
+                <br />
+                <input id="clearPlayerShips" type="button" value="Ułóż statki od nowa i rozpocznij grę od nowa." onclick="playerController.clearGame();" />
+                <br />
+
+
+            </div>
+            <div class="row" style="color:white">
+                <br/> Ja ustawiam statki, komputer strzela
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="row" style="color:white">
+                <div id="messageAreaPlayer"></div>
+                <div id="winInfoPlayer"></div>
+                <div id="errorInfoPlayer"></div>
+            </div>
+
+        </div>
+    </div>
 
 
 
