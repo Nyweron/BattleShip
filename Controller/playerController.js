@@ -67,6 +67,13 @@ const playerController = {
         } else {
             playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
         }
+
+        if (playerModel.validateSelectOptions(verticalHorizontalShip.id) == false) {
+            playerView.displayMsgHitOrMisst(3, this.errorInfoPlayer);
+            return false;
+        } else {
+            playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
+        }
     },
 
 
