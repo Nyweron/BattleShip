@@ -82,6 +82,23 @@ const playerController = {
             playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
         }
 
+        let setLenShip = document.getElementById(setLengthShip.id);
+        let setShipLocat = document.getElementById(setShipCell.id);
+        let setVerticalHorizontalShip = document.getElementById(verticalHorizontalShip.id);
+
+        let charValue = setShipLocat.value[0];
+        let digitValue = setShipLocat.value[1];
+
+        if (charValue == undefined || digitValue == undefined) {
+            shipView.displayMsgHitOrMisst(-1, "messageAreaPlayer");
+            return false;
+        }
+
+        let myRegexLetter = /^[a-jA-J]+$/;
+        let myRegexDigit = /[0-9]/g;
+
+
+
 
     },
 
