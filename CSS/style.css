@@ -20,6 +20,10 @@ td {
     margin-left: 15px;
 }
 
+.containeBroardPlayer {
+    margin-right: -7px;
+}
+
 .cell {
     display: block;
     position: relative;

@@ -1,5 +1,7 @@
 const playerController = {
 
+    errorInfoPlayer: "errorInfoPlayer",
+
     init: function() {
         playerModel.allRememberedShoots = [];
     },
@@ -56,6 +58,17 @@ const playerController = {
 
 
     },
+
+
+    checkShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {
+        if (playerModel.validateSelectOptions(setLengthShip.id) == false) {
+            playerView.displayMsgHitOrMisst(2, this.errorInfoPlayer);
+            return false;
+        } else {
+            playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
+        }
+    },
+
 
 
 

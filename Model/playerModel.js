@@ -1,5 +1,7 @@
 const playerModel = {
 
+
+
     rememberAllShotsPlayer: function(target) {
         let aim = parseInt(target);
         for (let i = 0; i < playerModel.allRememberedShoots.length; i++) {
@@ -10,4 +12,15 @@ const playerModel = {
         }
         playerModel.allRememberedShoots.push(aim);
     },
+
+    validateSelectOptions: function(idName) {
+        if (document.getElementById(idName).value == -1) {
+            playerView.validateSelectListOptions(0, idName);
+            return false;
+        } else {
+            playerView.validateSelectListOptions(1, idName);
+        }
+    },
+
+
 }
