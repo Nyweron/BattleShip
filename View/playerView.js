@@ -30,4 +30,13 @@ const playerView = {
         }
     },
 
+
+    validateSelectListOptions: function(num, idName) {
+        if (num === 0) {
+            document.getElementById(idName).style.border = "red solid 3px";
+        } else {
+            document.getElementById(idName).style.border = "";
+        }
+    },
+
 }

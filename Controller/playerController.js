@@ -74,6 +74,15 @@ const playerController = {
         } else {
             playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
         }
+
+        if (playerModel.validateInput(setShipCell.id) == false) {
+            playerView.displayMsgHitOrMisst(4, this.errorInfoPlayer);
+            return false;
+        } else {
+            playerView.displayMsgHitOrMisst(0, this.errorInfoPlayer);
+        }
+
+
     },
 
 

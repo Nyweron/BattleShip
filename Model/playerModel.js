@@ -22,5 +22,14 @@ const playerModel = {
         }
     },
 
+    validateInput: function(idName) {
+        if (document.getElementById(idName).value == "") {
+            playerView.validateSelectListOptions(0, idName);
+            return false;
+        } else {
+            playerView.validateSelectListOptions(1, idName);
+        }
+    },
+
 
 }
