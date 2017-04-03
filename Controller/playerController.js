@@ -3,7 +3,16 @@ const playerController = {
     errorInfoPlayer: "errorInfoPlayer",
 
     init: function() {
+        playerModel.ships = [];
         playerModel.allRememberedShoots = [];
+        playerModel.cntShips = 0;
+        playerModel.directions = []; //Direction mean row, or col, horizontal or vertical. 0 ships are vertical - col
+        playerModel.cntShips = 0;
+        playerModel.cntShipsOne = 0;
+        playerModel.cntShipsTwo = 0;
+        playerModel.cntShipsThree = 0;
+        playerModel.cntShipsFour = -1;
+        playerModel.cntShipsFive = -1;
     },
 
 
@@ -12,6 +21,7 @@ const playerController = {
         return (valueToFire.value.length > 3) ? true : false;
     },
 
+    //Check value which player introduce, if value is correct then display info on board
     checkValueToFire: function(valueToFire) {
         let fireVal = document.getElementById(valueToFire.id);
         if (this.checkLengthFire(fireVal)) {
@@ -59,7 +69,7 @@ const playerController = {
 
     },
 
-
+    //Check ship which player try set on board
     checkShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {
         if (playerModel.validateSelectOptions(setLengthShip.id) == false) {
             playerView.displayMsgHitOrMisst(2, this.errorInfoPlayer);
@@ -83,11 +93,18 @@ const playerController = {
         }
 
         let setLenShip = document.getElementById(setLengthShip.id);
+
+        if (setLenShip < 1 && setLenShip > 5) {
+            return false;
+        }
+
         let setShipLocat = document.getElementById(setShipCell.id);
         let setVerticalHorizontalShip = document.getElementById(verticalHorizontalShip.id);
 
         let charValue = setShipLocat.value[0];
         let digitValue = setShipLocat.value[1];
+        let playerShip = "";
+        let newTarget = ""
 
         if (charValue == undefined || digitValue == undefined) {
             shipView.displayMsgHitOrMisst(-1, "messageAreaPlayer");
@@ -97,8 +114,31 @@ const playerController = {
         let myRegexLetter = /^[a-jA-J]+$/;
         let myRegexDigit = /[0-9]/g;
 
+        if (myRegexLetter.test(charValue)) {
+            if (digitValue.match(myRegexDigit)) {
+                newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
+                if (newTarget === -1) {
+                    return false;
+                }
+            } else {
+                shipView.displayMsgHitOrMisst(-1, "messageAreaPlayer");
+                return false;
+            }
+        } else {
+            shipView.displayMsgHitOrMisst(-1, "messageAreaPlayer");
+            return false;
+        }
 
-
+        playerShip = playerModel.setLocationShip(setLenShip, newTarget, setVerticalHorizontalShip);
+        if (playerShip == false) {
+            playerView.displayMsgHitOrMisst(1, "errorInfoPlayer");
+        } else if (playerShip === 5) {
+            playerView.displayMsgHitOrMisst(5, "errorInfoPlayer");
+        } else {
+            let currentShip = playerModel.ships;
+            playerView.displayShipAllCells(1, currentShip[playerModel.cntShips - 1].location, "tableBoard2");
+            playerView.displayShipAllCells(2, currentShip[playerModel.cntShips - 1].locationAroundShip, "tableBoard2");
+        }
 
     },
 

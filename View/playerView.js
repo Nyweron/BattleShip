@@ -39,4 +39,22 @@ const playerView = {
         }
     },
 
+    displayShipAllCells: function(val, target, boardName) {
+        if (boardName == "tableBoard2") {
+            for (let i = 0; i < target.length; i++) {
+
+                let td = document.getElementById(target[i] + "" + 1);
+                if (val === 1) {
+                    td.style.background = '#FF121B'; //red
+                } else if (val === 2) {
+                    td.style.background = '#013190'; //blue
+                } else if (val === 3) {
+                    td.style.background = '#FF121B'; //red
+                } else {
+                    td.style.background = '#404040'; //dark grey
+                }
+            }
+        }
+    },
+
 }
