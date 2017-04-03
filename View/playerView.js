@@ -57,4 +57,8 @@ const playerView = {
         }
     },
 
+    blockButton: function(idName, val) {
+        document.getElementById(idName).disabled = val;
+    },
+
 }

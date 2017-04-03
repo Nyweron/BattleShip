@@ -137,4 +137,13 @@ const playerModel = {
         }
     },
 
+    //as long as ships are available in select option, button will be visible
+    blockBtnSinceShipWillBeSet: function(idName, shipsAreSet) {
+        if (shipsAreSet === 0) {
+            playerView.blockButton(idName, true);
+        } else {
+            playerView.blockButton(idName, false);
+        }
+    },
+
 }
