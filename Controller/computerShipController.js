@@ -9,6 +9,18 @@ const computerShipController = {
     },
 
 
+    clearGame: function() {
+        computerShipModel.boardSize = 0;
+        computerShipModel.numShips = 0
+        computerShipModel.directions = [];
+        computerShipModel.ships = '';
+        computerShipModel.shoots = [];
+        shipView.displayMsgHitOrMisst(-3, "messageArea");
+        shipView.displayMsgHitOrMisst(-3, "winInfo");
+        shipView.displayMsgHitOrMisst(-4, "valueToFire");
+        shipView.clearBoard();
+    },
+
     checkPlayerFireWithComputerShips: function(fire) {
         for (let i = 0; i < computerShipModel.ships.length; i++) {
             for (let j = 0; j < computerShipModel.ships[i].location.length; j++) {

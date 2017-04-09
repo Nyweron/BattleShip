@@ -15,6 +15,7 @@ const playerController = {
         playerModel.cntShipsFive = -1;
         playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
         playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
+        playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 1);
     },
 
 
@@ -159,7 +160,13 @@ const playerController = {
 
     },
 
+    clearGame: function() {
+        playerView.clearBoard();
+        computerShipController.clearGame();
+        shipView.clearBoard();
 
+        window.onload = baseController.run();
+    },
 
 
 }

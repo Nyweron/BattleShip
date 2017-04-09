@@ -61,4 +61,13 @@ const playerView = {
         document.getElementById(idName).disabled = val;
     },
 
+    clearBoard: function() {
+        for (let i = 0; i <= 9; i++) {
+            for (let j = 0; j <= 9; j++) {
+                let td = document.getElementById(i + "" + j + "" + 1);
+                td.style.background = '';
+            }
+        }
+    },
+
 }
