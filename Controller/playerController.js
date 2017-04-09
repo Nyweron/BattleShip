@@ -14,7 +14,7 @@ const playerController = {
         playerModel.cntShipsFour = -1;
         playerModel.cntShipsFive = -1;
         playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
-        playerModel.blockBtnSinceShipWillBeSet("valToFire", 0);
+        playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
     },
 
 
@@ -145,7 +145,7 @@ const playerController = {
         setLenShip.value = -1;
         setShipLocat.value = "";
         setVerticalHorizontalShip.value = -1;
-        if (playerModel.ships.length === shipModel.numShips) {
+        if (playerModel.ships.length === computerShipModel.numShips) {
             var temp = "Rozpocznij grę";
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
             playerModel.blockBtnSinceShipWillBeSet("valToFire", 1);
