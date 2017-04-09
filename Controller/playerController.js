@@ -72,9 +72,10 @@ const playerController = {
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
-
         }
 
+        //In this part computer shoot, after player shoooted
+        console.log("Komputer strzela");
 
     },
 
