@@ -66,7 +66,13 @@ const playerController = {
             return false;
         }
 
+        if (baseModel.allShipsSink(computerShipModel.ships) === true) {
+            console.log("User wygrał");
+            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
+            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
+            playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
 
+        }
 
 
     },

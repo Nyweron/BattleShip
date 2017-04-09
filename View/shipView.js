@@ -18,7 +18,7 @@ var shipView = {
             document.getElementById(divID).innerHTML = "TRAFIONY";
             document.getElementById(divID).style.color = "Green";
         } else if (val === 2) {
-            document.getElementById(divID).innerHTML = "ZATOPIŁEŚ, WSZYSTKIE STATKI! <br /> Koniec Gry <br /> Ilość strzałów: " + shipModel.shoots.length;
+            document.getElementById(divID).innerHTML = "ZATOPIŁEŚ, WSZYSTKIE STATKI! <br /> Koniec Gry <br /> Ilość strzałów: " + computerShipModel.shoots.length;
             document.getElementById(divID).style.color = "Green";
         } else if (val === 3) {
             document.getElementById(divID).innerHTML = "ZATOPIONY!";

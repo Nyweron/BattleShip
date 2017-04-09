@@ -1,5 +1,34 @@
-var baseModel = {
+const baseModel = {
 
+
+
+    cntAllShipsHits: function(ships) {
+        let cntAllHits = 0;
+        for (let i = 0; i < ships.length; i++) {
+            for (let j = 0; j < ships[i].hits.length; j++) {
+                cntAllHits++;
+            }
+        }
+        return cntAllHits;
+    },
+
+    allShipsSink: function(ships) {
+        let cntAllHits = this.cntAllShipsHits(ships);
+        let cntAllHitsSinkShips = 0;
+
+        for (let i = 0; i < ships.length; i++) {
+            for (let j = 0; j < ships[i].hits.length; j++) {
+                if (ships[i].hits[j] === 1) {
+                    cntAllHitsSinkShips++;
+                }
+            }
+        }
+
+        if (cntAllHitsSinkShips === cntAllHits) {
+            return true;
+        }
+        return false;
+    },
 
 
     checkNewShipsWithExistsShips: function(newShipLocations, ships) {
@@ -17,7 +46,7 @@ var baseModel = {
     },
 
     deleteDuplicateInArray: function(list) {
-        var result = [];
+        let result = [];
         $.each(list, function(i, e) {
             if ($.inArray(e, result) == -1) result.push(e);
         });
@@ -76,13 +105,13 @@ var baseModel = {
         let k = 0;
 
         if (location.length == 5) {
-            for (var j = 0; j < location.length; j++) {
-                var row = parseInt(location[j].charAt(0));
-                var col = parseInt(location[j].charAt(1));
-                var lowerRow = parseInt(row) - 1;
-                var higherRow = parseInt(row) + 1;
-                var lowerCol = parseInt(col) - 1;
-                var higherCol = parseInt(col) + 1;
+            for (let j = 0; j < location.length; j++) {
+                let row = parseInt(location[j].charAt(0));
+                let col = parseInt(location[j].charAt(1));
+                let lowerRow = parseInt(row) - 1;
+                let higherRow = parseInt(row) + 1;
+                let lowerCol = parseInt(col) - 1;
+                let higherCol = parseInt(col) + 1;
 
                 if (directions[i] === 0) { //row poziom
                     if (k === 0) {
@@ -273,13 +302,13 @@ var baseModel = {
         }
 
         if (location.length == 4) {
-            for (var j = 0; j < location.length; j++) {
-                var row = parseInt(location[j].charAt(0));
-                var col = parseInt(location[j].charAt(1));
-                var lowerRow = parseInt(row) - 1;
-                var higherRow = parseInt(row) + 1;
-                var lowerCol = parseInt(col) - 1;
-                var higherCol = parseInt(col) + 1;
+            for (let j = 0; j < location.length; j++) {
+                let row = parseInt(location[j].charAt(0));
+                let col = parseInt(location[j].charAt(1));
+                let lowerRow = parseInt(row) - 1;
+                let higherRow = parseInt(row) + 1;
+                let lowerCol = parseInt(col) - 1;
+                let higherCol = parseInt(col) + 1;
 
                 if (directions[i] === 0) { //row poziom
                     if (k === 0) {
@@ -448,13 +477,13 @@ var baseModel = {
         }
 
         if (location.length == 3) {
-            for (var j = 0; j < location.length; j++) {
-                var row = parseInt(location[j].charAt(0));
-                var col = parseInt(location[j].charAt(1));
-                var lowerRow = parseInt(row) - 1;
-                var higherRow = parseInt(row) + 1;
-                var lowerCol = parseInt(col) - 1;
-                var higherCol = parseInt(col) + 1;
+            for (let j = 0; j < location.length; j++) {
+                let row = parseInt(location[j].charAt(0));
+                let col = parseInt(location[j].charAt(1));
+                let lowerRow = parseInt(row) - 1;
+                let higherRow = parseInt(row) + 1;
+                let lowerCol = parseInt(col) - 1;
+                let higherCol = parseInt(col) + 1;
 
                 if (directions[i] === 0) { //row poziom
                     if (k === 0) {
@@ -597,13 +626,13 @@ var baseModel = {
         }
 
         if (location.length == 2) {
-            for (var j = 0; j < location.length; j++) {
-                var row = parseInt(location[j].charAt(0));
-                var col = parseInt(location[j].charAt(1));
-                var lowerRow = parseInt(row) - 1;
-                var higherRow = parseInt(row) + 1;
-                var lowerCol = parseInt(col) - 1;
-                var higherCol = parseInt(col) + 1;
+            for (let j = 0; j < location.length; j++) {
+                let row = parseInt(location[j].charAt(0));
+                let col = parseInt(location[j].charAt(1));
+                let lowerRow = parseInt(row) - 1;
+                let higherRow = parseInt(row) + 1;
+                let lowerCol = parseInt(col) - 1;
+                let higherCol = parseInt(col) + 1;
 
 
                 if (directions[i] === 0) {
