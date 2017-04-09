@@ -146,9 +146,9 @@ const playerController = {
         setShipLocat.value = "";
         setVerticalHorizontalShip.value = -1;
         if (playerModel.ships.length === computerShipModel.numShips) {
-            var temp = "Rozpocznij grę";
+            console.log("Rozpocznij grę");
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
-            playerModel.blockBtnSinceShipWillBeSet("valToFire", 1);
+            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 1);
         }
 
     },
