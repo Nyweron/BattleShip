@@ -74,8 +74,11 @@ const playerController = {
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
         }
 
-        //In this part computer shoot, after player shoooted
+        //In this part computer shoot, after player shooted
         console.log("Komputer strzela");
+
+
+
 
     },
 
