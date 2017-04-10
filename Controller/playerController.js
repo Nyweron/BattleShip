@@ -68,7 +68,7 @@ const playerController = {
         }
 
         if (baseModel.allShipsSink(computerShipModel.ships) === true) {
-            console.log("User wygrał");
+            console.log("Użytkownik wygrał");
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
@@ -76,10 +76,11 @@ const playerController = {
 
         //In this part computer shoot, after player shooted
         console.log("Komputer strzela");
+        let computerTargetToFire = "";
 
-
-
-
+        computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
+        console.log("computerTargetToFire: " + computerTargetToFire);
+        computerGenerateFireView.enemyFireYourBoard(1, computerTargetToFire, "tableBoard2");
     },
 
     //Check ship which player try set on board
