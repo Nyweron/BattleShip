@@ -12,4 +12,6 @@ describe("computerGenerateFireModelSpec", function() {
         expect(tempAllCells).toContain(cell);
     });
 
+    //TO DO rememberComputerShots
+
 });
