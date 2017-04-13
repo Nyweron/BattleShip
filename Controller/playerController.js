@@ -76,11 +76,14 @@ const playerController = {
         }
 
         //In this part computer shoot, after player shooted
-        console.log("Komputer strzela");
+        // console.log("");
+        // console.log("");
+        // console.log("");
+        // console.log("Komputer strzela");
         let computerTargetToFire = "";
 
         computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
-        console.log("computerTargetToFire: " + computerTargetToFire);
+        // console.log("computerTargetToFire: " + computerTargetToFire);
         let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
         computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
 
