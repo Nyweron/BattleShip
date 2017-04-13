@@ -25,7 +25,7 @@ const computerGenerateFireModel = {
         return target;
     },
 
-    //Computer check target with all playersShip
+    //Computer check target with all playerShips
     checkComputerHitPlayerShip: function(tar) {
         //remember all shoots, and remove value from allCells. Thanks that when I'm debug, I'm sure that computer never use the same value.
         let target = this.rememberComputerShots(tar);
