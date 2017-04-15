@@ -145,8 +145,7 @@ const computerGenerateFireModel = {
             newTarget = this.checkComputerShootWhenHitEnemyShip(newTarget);
         }
 
-        this.lastComputerFireHit[2] = true;
-        this.lastComputerFireHit[3] = hitItShip;
+
 
         return newTarget;
     },
