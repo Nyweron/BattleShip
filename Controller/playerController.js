@@ -81,10 +81,24 @@ const playerController = {
         console.log("Komputer strzela");
         let computerTargetToFire = "";
 
-        computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
-        console.log("computerTargetToFire: " + computerTargetToFire);
-        let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
-        computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
+
+
+        if (computerGenerateFireModel.lastComputerFireHit[0] === true) {
+            //Random value around last hit. For example, last hit was C3, so computer should choose random number like C4, C2, B3, D3...
+            computerTargetToFire = computerGenerateFireModel.shotAroundTheHitEnemyShip(computerGenerateFireModel.lastComputerFireHit[1]);
+            let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
+            computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
+        } else if (computerGenerateFireModel.lastComputerFireHit[2] === true) {
+            computerTargetToFire = computerGenerateFireModel.shotAroundTheHitEnemyShip(computerGenerateFireModel.lastComputerFireHit[3]);
+            let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
+            computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
+        } else {
+            //
+            computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
+            console.log("computerTargetToFire: " + computerTargetToFire);
+            let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
+            computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
+        }
 
         if (baseModel.allShipsSink(playerModel.ships) === true) {
             console.log("Computer wygrał")
@@ -94,6 +108,10 @@ const playerController = {
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
         }
     },
+
+
+
+
 
     //Check ship which player try set on board
     checkShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {

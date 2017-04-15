@@ -54,20 +54,17 @@ const baseModel = {
     },
 
     collision: function(location, dots, ships) {
-
-        let loc = location;
-        let dot = dots;
         let firstShip = ships[0];
 
         for (let i = 0; i < ships.length; i++) {
             firstShip = ships[i];
             if (firstShip.location[0] == "") { continue; }
 
-            if (this.checkDotsAroundsShipWithNewLocationShip(firstShip, loc) == false) {
+            if (this.checkDotsAroundsShipWithNewLocationShip(firstShip, location) == false) {
                 return false;
             }
 
-            if (this.checkAllShipsWithNewDots(firstShip, dot, i) == false) {
+            if (this.checkAllShipsWithNewDots(firstShip, dots, i) == false) {
                 return false;
             }
         }

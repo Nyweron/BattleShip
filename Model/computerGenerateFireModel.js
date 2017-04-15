@@ -20,9 +20,7 @@ const computerGenerateFireModel = {
         let target = "";
         let tar = Math.floor((Math.random() * computerGenerateFireModel.allCells.length) + 0);
 
-        target = (tar >= 0 && tar <= 9) ? target = "0" + String(tar) : target = String(tar);
-
-        return target;
+        return (tar >= 0 && tar <= 9) ? target = "0" + String(tar) : target = String(tar);
     },
 
     //Computer check target with all playerShips
@@ -31,13 +29,14 @@ const computerGenerateFireModel = {
         let target = this.rememberComputerShots(tar);
         //remove target from allCells. Computer never choose the same value
         this.removeOneCellFromAllCells(target);
-
+        console.log("target: " + target);
         for (let i = 0; i < playerModel.ships.length; i++) {
             for (let j = 0; j < playerModel.ships[i].location.length; j++) {
                 if (playerModel.ships[i].location[j] == target) {
                     this.setShootedShip(i);
                     this.lastComputerFireHit[0] = true;
                     this.lastComputerFireHit[1] = target;
+                    console.log(this.lastComputerFireHit);
                     return target;
                 }
             }
@@ -74,6 +73,37 @@ const computerGenerateFireModel = {
                 return true;
             }
         }
+    },
+
+    //if last computer shoot hit the enemy ship generate new value around last hit.
+    shotAroundTheHitEnemyShip: function(hitItShip) {
+        let row = parseInt(hitItShip.charAt(0));
+        let col = parseInt(hitItShip.charAt(1));
+        let lowerRow = parseInt(row) - 1;
+        let higherRow = parseInt(row) + 1;
+        let lowerCol = parseInt(col) - 1;
+        let higherCol = parseInt(col) + 1;
+        let newTarget = "";
+        let _bool = false;
+
+        //Notes
+        //Check four times every possible shot around the hit ship.
+        //For example, last hit was C3, so computer should choose random number like C4, C2, B3, D3...
+
+        if (higherCol <= 9) {
+            newTarget = row + "" + higherCol;
+        } else if (lowerCol >= 0) {
+            newTarget = row + "" + lowerCol;
+        } else if (higherRow <= 9) {
+            newTarget = higherRow + "" + col;
+        } else if (lowerRow >= 0) {
+            newTarget = lowerRow + "" + col;
+        }
+
+        this.lastComputerFireHit[2] = true;
+        this.lastComputerFireHit[3] = hitItShip;
+
+        return newTarget;
     },
 
 }
