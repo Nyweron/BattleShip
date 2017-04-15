@@ -86,10 +86,8 @@ const playerController = {
         if (computerGenerateFireModel.lastComputerFireHit[0] === true) {
             //Random value around last hit. For example, last hit was C3, so computer should choose random number like C4, C2, B3, D3...
             computerTargetToFire = computerGenerateFireModel.shotAroundTheHitEnemyShip(computerGenerateFireModel.lastComputerFireHit[1]);
-            //let targ = computerGenerateFireModel.checkComputerShootWhenHitEnemyShip(computerTargetToFire);
             computerGenerateFireView.enemyFireYourBoard(1, computerTargetToFire, "tableBoard2");
         } else {
-            //
             computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
             console.log("computerTargetToFire: " + computerTargetToFire);
             let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
@@ -97,7 +95,7 @@ const playerController = {
         }
 
         if (baseModel.allShipsSink(playerModel.ships) === true) {
-            console.log("Computer wygrał")
+            console.log("Komputer wygrał")
 
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);

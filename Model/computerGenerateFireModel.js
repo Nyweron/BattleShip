@@ -46,6 +46,7 @@ const computerGenerateFireModel = {
         return target;
     },
 
+    //If previous fire hit it in enemy fire then, Computer check target with all playerShips.
     checkComputerShootWhenHitEnemyShip: function(target) {
         var tar = this.rememberComputerShotsWhenHit(target);
         this.removeOneCellFromAllCells(tar);
@@ -67,6 +68,7 @@ const computerGenerateFireModel = {
         return tar;
     },
 
+
     rememberComputerShots: function(target) {
         let aim = parseInt(target);
         let valueFromIndex = computerGenerateFireModel.allCells[aim];
@@ -77,6 +79,14 @@ const computerGenerateFireModel = {
         return valueFromIndex;
     },
 
+    //This part is different than "rememberComputerShots" 
+    //because in "rememberComputerShots" argument is index in allCells.
+    //But in "rememberComputerShotsWhenHit" function target is value no index from allCells.
+    //In this function we give value when previous shot hit it enemy ship.
+    //In "rememberComputerShots" we random index and get value from this index.
+    //Why the two function must be different? 
+    //Because "rememberComputerShots" take random index. App can draw ten times the same index. But in this index will be another value.
+    //
     rememberComputerShotsWhenHit: function(target) {
         var index = computerGenerateFireModel.allCells.indexOf(target);
         if (index >= 0) {
