@@ -46,6 +46,27 @@ const computerGenerateFireModel = {
         return target;
     },
 
+    checkComputerShootWhenHitEnemyShip: function(target) {
+        var tar = this.rememberComputerShotsWhenHit(target);
+        this.removeOneCellFromAllCells(tar);
+
+        for (var i = 0; i < playerModel.ships.length; i++) {
+            for (var j = 0; j < playerModel.ships[i].location.length; j++) {
+                if (playerModel.ships[i].location[j] == tar) {
+                    this.setShootedShip(i);
+                    this.lastComputerFireHit[0] = true;
+                    this.lastComputerFireHit[1] = tar;
+
+                    return tar;
+                }
+            }
+        }
+        this.lastComputerFireHit[0] = false;
+        this.lastComputerFireHit[1] = "";
+
+        return tar;
+    },
+
     rememberComputerShots: function(target) {
         let aim = parseInt(target);
         let valueFromIndex = computerGenerateFireModel.allCells[aim];
@@ -54,6 +75,17 @@ const computerGenerateFireModel = {
         retTargetValue = valueFromIndex;
 
         return valueFromIndex;
+    },
+
+    rememberComputerShotsWhenHit: function(target) {
+        var index = computerGenerateFireModel.allCells.indexOf(target);
+        if (index >= 0) {
+            computerGenerateFireModel.shoots.push(target);
+        }
+
+        retTargetValue = target;
+
+        return target;
     },
 
     removeOneCellFromAllCells: function(target) {
@@ -98,6 +130,19 @@ const computerGenerateFireModel = {
             newTarget = higherRow + "" + col;
         } else if (lowerRow >= 0) {
             newTarget = lowerRow + "" + col;
+        }
+
+        for (let i = 0; i < computerGenerateFireModel.shoots.length; i++) {
+            if (newTarget === computerGenerateFireModel.shoots[i]) {
+                newTarget = this.generateComputerCellToFire();
+                newTarget = this.checkComputerHitPlayerShip(newTarget);
+                _bool = true;
+                break;
+            }
+        }
+
+        if (_bool === false) {
+            newTarget = this.checkComputerShootWhenHitEnemyShip(newTarget);
         }
 
         this.lastComputerFireHit[2] = true;
