@@ -109,22 +109,21 @@ const playerController = {
 
     //Check ship which player try set on board
     checkShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {
-
         this.validationSetShip(setShipCell, setLengthShip, verticalHorizontalShip);
-
         let setLenShip = document.getElementById(setLengthShip.id);
 
-        if (setLenShip < 1 && setLenShip > 5) {
+
+        setLenShip.value < 1 && setLenShip.value > 5 ? false : "";
+
+        if (setLenShip.value < "1" || setLenShip.value > "5") {
             return false;
         }
 
         let setShipLocat = document.getElementById(setShipCell.id);
         let setVerticalHorizontalShip = document.getElementById(verticalHorizontalShip.id);
-
         let charValue = setShipLocat.value[0];
         let digitValue = setShipLocat.value[1];
         let playerShip = "";
-
 
         if (charValue == undefined || digitValue == undefined) {
             shipView.displayMsgHitOrMisst(-1, "messageAreaPlayer");
@@ -133,7 +132,6 @@ const playerController = {
 
         let newTarget = this.validationCellWhichUserSet(charValue, digitValue);
         if (newTarget) {
-
             playerShip = playerModel.setLocationShip(setLenShip, newTarget, setVerticalHorizontalShip);
             if (playerShip == false) {
                 playerView.displayMsgHitOrMisst(1, "errorInfoPlayer");
@@ -153,8 +151,9 @@ const playerController = {
                 playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
                 playerModel.blockBtnSinceShipWillBeSet("valueToFire", 1);
             }
-        } else { return false; }
-
+        } else {
+            return false;
+        }
     },
 
     clearGame: function() {
@@ -189,6 +188,7 @@ const playerController = {
         }
     },
 
+
     validationCellWhichUserSet: function(charValue, digitValue) {
         let newTarget = "";
         let myRegexLetter = /^[a-jA-J]+$/;
@@ -210,6 +210,6 @@ const playerController = {
         }
 
         return newTarget;
-    }
+    },
 
 }
