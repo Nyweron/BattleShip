@@ -112,9 +112,6 @@ const playerController = {
         this.validationSetShip(setShipCell, setLengthShip, verticalHorizontalShip);
         let setLenShip = document.getElementById(setLengthShip.id);
 
-
-        setLenShip.value < 1 && setLenShip.value > 5 ? false : "";
-
         if (setLenShip.value < "1" || setLenShip.value > "5") {
             return false;
         }
@@ -132,25 +129,14 @@ const playerController = {
 
         let newTarget = this.validationCellWhichUserSet(charValue, digitValue);
         if (newTarget) {
-            playerShip = playerModel.setLocationShip(setLenShip, newTarget, setVerticalHorizontalShip);
-            if (playerShip == false) {
-                playerView.displayMsgHitOrMisst(1, "errorInfoPlayer");
-            } else if (playerShip === 5) {
-                playerView.displayMsgHitOrMisst(5, "errorInfoPlayer");
-            } else {
-                let currentShip = playerModel.ships;
-                playerView.displayShipAllCells(1, currentShip[playerModel.cntShips - 1].location, "tableBoard2");
-                playerView.displayShipAllCells(2, currentShip[playerModel.cntShips - 1].locationAroundShip, "tableBoard2");
-            }
+            this.afterValidationSetShipOnUserBoard(setLenShip, newTarget, setVerticalHorizontalShip);
 
             setLenShip.value = -1;
             setShipLocat.value = "";
             setVerticalHorizontalShip.value = -1;
-            if (playerModel.ships.length === computerShipModel.numShips) {
-                console.log("Rozpocznij grę");
-                playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
-                playerModel.blockBtnSinceShipWillBeSet("valueToFire", 1);
-            }
+
+            this.unBlockBtnWhenAllShipsAreSet();
+
         } else {
             return false;
         }
@@ -164,7 +150,7 @@ const playerController = {
         window.onload = baseController.run();
     },
 
-    //Check did user properly set options to set a ship
+    //Check did user properly set options to set a ship.
     validationSetShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {
         if (playerModel.validateSelectOptions(setLengthShip.id) == false) {
             playerView.displayMsgHitOrMisst(2, this.errorInfoPlayer);
@@ -188,7 +174,7 @@ const playerController = {
         }
     },
 
-
+    //Chceck charvalue and digitvalue are correct for example A5 is Correct, AA is not correct.
     validationCellWhichUserSet: function(charValue, digitValue) {
         let newTarget = "";
         let myRegexLetter = /^[a-jA-J]+$/;
@@ -211,5 +197,28 @@ const playerController = {
 
         return newTarget;
     },
+
+    //If all options for set one ship are correct then display user ship on board.
+    afterValidationSetShipOnUserBoard: function(setLenShip, newTarget, setVerticalHorizontalShip) {
+        let playerShip = playerModel.setLocationShip(setLenShip, newTarget, setVerticalHorizontalShip);
+        if (playerShip == false) {
+            playerView.displayMsgHitOrMisst(1, "errorInfoPlayer");
+        } else if (playerShip === 5) {
+            playerView.displayMsgHitOrMisst(5, "errorInfoPlayer");
+        } else {
+            let currentShip = playerModel.ships;
+            playerView.displayShipAllCells(1, currentShip[playerModel.cntShips - 1].location, "tableBoard2");
+            playerView.displayShipAllCells(2, currentShip[playerModel.cntShips - 1].locationAroundShip, "tableBoard2");
+        }
+    },
+
+
+    unBlockBtnWhenAllShipsAreSet: function() {
+        if (playerModel.ships.length === computerShipModel.numShips) {
+            console.log("Rozpocznij grę");
+            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
+            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 1);
+        }
+    }
 
 }
