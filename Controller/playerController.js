@@ -18,13 +18,9 @@ const playerController = {
         playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 1);
     },
 
-
-
     checkLengthFire: function(valueToFire) {
         return (valueToFire.value.length > 3) ? true : false;
     },
-
-
 
     //Check value which player introduce, if value is correct then display info on board
     checkValueToFire: function(valueToFire) {
@@ -45,28 +41,10 @@ const playerController = {
         //In this part computer shoot, after player shooted
         console.log("");
         console.log("Komputer strzela");
-        let computerTargetToFire = "";
 
-
-
-        if (computerGenerateFireModel.lastComputerFireHit[0] === true) {
-            //Random value around last hit. For example, last hit was C3, so computer should choose random number like C4, C2, B3, D3...
-            computerTargetToFire = computerGenerateFireModel.shotAroundTheHitEnemyShip(computerGenerateFireModel.lastComputerFireHit[1]);
-            computerGenerateFireView.enemyFireYourBoard(1, computerTargetToFire, "tableBoard2");
-        } else {
-            computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
-            console.log("computerTargetToFire: " + computerTargetToFire);
-            let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
-            computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
-        }
-
+        this.computerFireInPlayerShip();
         this.checkDidComputerDestroyAllPlayerShips();
-
     },
-
-
-
-
 
     //Check ship which player try set on board
     checkShip: function(setShipCell, setLengthShip, verticalHorizontalShip) {
@@ -181,7 +159,6 @@ const playerController = {
         }
     },
 
-
     validationCellWhichPlayerIntroduceToFire: function(charValue, digitValue) {
         let regexLetter = /^[a-jA-J]+$/;
         let regexDigit = /[0-9]/g;
@@ -237,6 +214,20 @@ const playerController = {
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
+        }
+    },
+
+    computerFireInPlayerShip: function() {
+        let computerTargetToFire = "";
+        if (computerGenerateFireModel.lastComputerFireHit[0] === true) {
+            //Random value around last hit. For example, last hit was C3, so computer should choose random number like C4, C2, B3, D3...
+            computerTargetToFire = computerGenerateFireModel.shotAroundTheHitEnemyShip(computerGenerateFireModel.lastComputerFireHit[1]);
+            computerGenerateFireView.enemyFireYourBoard(1, computerTargetToFire, "tableBoard2");
+        } else {
+            computerTargetToFire = computerGenerateFireModel.generateComputerCellToFire();
+            console.log("computerTargetToFire: " + computerTargetToFire);
+            let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
+            computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
         }
     },
 
