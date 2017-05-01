@@ -24,11 +24,13 @@ const playerController = {
         return (valueToFire.value.length > 3) ? true : false;
     },
 
+
+
     //Check value which player introduce, if value is correct then display info on board
     checkValueToFire: function(valueToFire) {
         let fireVal = document.getElementById(valueToFire.id);
+
         if (this.checkLengthFire(fireVal)) {
-            //msg about bad values to fire
             shipView.displayMsgHitOrMisst(666, "messageArea");
             return false;
         }
@@ -36,47 +38,11 @@ const playerController = {
         let charValue = fireVal.value[0];
         let digitValue = fireVal.value[1];
 
-        if (charValue == undefined || digitValue == undefined) {
-            shipView.displayMsgHitOrMisst(-1, "messageArea");
-            return false;
-        }
-
-        let regexLetter = /^[a-jA-J]+$/;
-        let regexDigit = /[0-9]/g;
-
-        if (regexLetter.test(charValue)) {
-            if (digitValue.match(regexDigit)) {
-                const newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
-                if (newTarget === -1) {
-                    return false;
-                }
-                if (playerModel.rememberAllShotsPlayer(newTarget) === false) {
-                    return false;
-                }
-
-                const info = computerShipController.checkPlayerFireWithComputerShips(newTarget);
-                shipView.displayMsgHitOrMisst(info, "messageArea");
-                shipView.displayShipOneCell(info, newTarget);
-
-            } else {
-                shipView.displayMsgHitOrMisst(-1, "messageArea");
-                return false;
-            }
-        } else {
-            shipView.displayMsgHitOrMisst(-1, "messageArea");
-            return false;
-        }
-
-        if (baseModel.allShipsSink(computerShipModel.ships) === true) {
-            console.log("Użytkownik wygrał");
-
-            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
-            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
-            playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
-        }
+        if (!this.charValueDigitValueAreUndefined(charValue, digitValue)) { return false; }
+        if (!this.validationCellWhichPlayerIntroduceToFire(charValue, digitValue)) { return false; }
+        this.checkDidUserDestroyAllEnemyShips();
 
         //In this part computer shoot, after player shooted
-
         console.log("");
         console.log("Komputer strzela");
         let computerTargetToFire = "";
@@ -94,13 +60,8 @@ const playerController = {
             computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
         }
 
-        if (baseModel.allShipsSink(playerModel.ships) === true) {
-            console.log("Komputer wygrał")
+        this.checkDidComputerDestroyAllPlayerShips();
 
-            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
-            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
-            playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
-        }
     },
 
 
@@ -212,13 +173,71 @@ const playerController = {
         }
     },
 
-
     unBlockBtnWhenAllShipsAreSet: function() {
         if (playerModel.ships.length === computerShipModel.numShips) {
             console.log("Rozpocznij grę");
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 1);
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 1);
         }
-    }
+    },
+
+
+    validationCellWhichPlayerIntroduceToFire: function(charValue, digitValue) {
+        let regexLetter = /^[a-jA-J]+$/;
+        let regexDigit = /[0-9]/g;
+
+        if (regexLetter.test(charValue)) {
+            if (digitValue.match(regexDigit)) {
+                const newTarget = baseModel.changeLetterToDigit(charValue) + digitValue;
+                if (newTarget === -1) {
+                    return false;
+                }
+                if (playerModel.rememberAllShotsPlayer(newTarget) === false) {
+                    return false;
+                }
+
+                const info = computerShipController.checkPlayerFireWithComputerShips(newTarget);
+                shipView.displayMsgHitOrMisst(info, "messageArea");
+                shipView.displayShipOneCell(info, newTarget);
+
+            } else {
+                shipView.displayMsgHitOrMisst(-1, "messageArea");
+                return false;
+            }
+        } else {
+            shipView.displayMsgHitOrMisst(-1, "messageArea");
+            return false;
+        }
+        return true;
+    },
+
+    //Check cell which user set to fire in enemy board.
+    charValueDigitValueAreUndefined: function(charValue, digitValue) {
+        if (charValue == undefined || digitValue == undefined) {
+            shipView.displayMsgHitOrMisst(-1, "messageArea");
+            return false;
+        }
+        return true;
+    },
+
+    checkDidUserDestroyAllEnemyShips: function() {
+        if (baseModel.allShipsSink(computerShipModel.ships) === true) {
+            console.log("Użytkownik wygrał");
+
+            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
+            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
+            playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
+        }
+    },
+
+    checkDidComputerDestroyAllPlayerShips: function() {
+        if (baseModel.allShipsSink(playerModel.ships) === true) {
+            console.log("Komputer wygrał")
+
+            playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
+            playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
+            playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
+        }
+    },
 
 }
