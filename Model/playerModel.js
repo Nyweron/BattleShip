@@ -146,4 +146,65 @@ const playerModel = {
         }
     },
 
+
+
+
+
+    generateShipLocations: function() {
+        console.log("generateShipLocationsPlayer");
+        let location, dots;
+        for (let i = 0; i < this.numShips; i++) {
+            let y = false;
+            do {
+                y = false;
+                location = this.generateShip(i);
+                dots = baseModel.generateDots(location, i, this.directions);
+
+                if (baseModel.collision(location, dots, this.randomShips) == true) {
+                    y = true;
+                }
+
+            } while (y != true);
+
+            this.randomShips[i].location = location;
+            console.log("Player location: " + location);
+            this.randomShips[i].locationAroundShip = dots;
+            console.log("Player dots: " + dots);
+            playerView.displayShipAllCells(1, location, "tableBoard2");
+            playerView.displayShipAllCells(2, dots, "tableBoard2");
+        }
+    },
+
+    // 0 ships are vertical "30", 40" "row-col" 
+    generateShip: function(i) {
+        console.log("generateShipPlayer");
+        let direction = Math.floor(Math.random() * 2);
+        let row = 0;
+        let col = 0;
+        let newShipLocations = [];
+        let actuallyShip = this.randomShips[i].location.length;
+
+        if (direction === 1) {
+            row = Math.floor(Math.random() * this.boardSize);
+            col = Math.floor(Math.random() * (this.boardSize - actuallyShip));
+        } else {
+            row = Math.floor(Math.random() * (this.boardSize - actuallyShip));
+            col = Math.floor(Math.random() * this.boardSize);
+        }
+
+        this.directions[i] = direction;
+        for (let j = 0; j < actuallyShip; j++) {
+            if (direction === 1) {
+                newShipLocations.push(row + "" + (col + j));
+            } else {
+                newShipLocations.push((row + j) + "" + col);
+            }
+        }
+
+        let newShipLoc = baseModel.checkNewShipsWithExistsShips(newShipLocations, this.randomShips);
+
+        return newShipLoc == 1 ? this.generateShip(i) : newShipLoc;
+    },
+
+
 }

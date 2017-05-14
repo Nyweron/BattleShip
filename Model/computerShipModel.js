@@ -16,9 +16,9 @@ var computerShipModel = {
             } while (y != true);
 
             this.ships[i].location = location;
-            console.log("location: " + location);
+            console.log("Computer location: " + location);
             this.ships[i].locationAroundShip = dots;
-            console.log("dots: " + dots);
+            console.log("Computer dots: " + dots);
             // shipView.displayShip(1, location);
             //shipView.displayShip(2, dots);
         }

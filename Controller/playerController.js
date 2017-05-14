@@ -3,7 +3,10 @@ const playerController = {
     errorInfoPlayer: "errorInfoPlayer",
 
     init: function() {
+        playerModel.boardSize = 10;
         playerModel.ships = [];
+        playerModel.randomShips = shipModel.actuallyShip();
+        playerModel.numShips = playerModel.randomShips.length;
         playerModel.allRememberedShoots = [];
         playerModel.cntShips = 0;
         playerModel.directions = []; //Direction mean row, or col, horizontal or vertical. 0 ships are vertical - col
