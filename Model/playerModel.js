@@ -206,5 +206,14 @@ const playerModel = {
         return newShipLoc == 1 ? this.generateShip(i) : newShipLoc;
     },
 
+    setOptions: function(i) {
+
+        if (i === 1) {
+            document.getElementById("containerBoardPlayer").style.visibility = 'hidden';
+        } else if (i === 2) {
+            document.getElementById("containerBoardPlayer").style.visibility = 'visible';
+        }
+    },
+
 
 }
