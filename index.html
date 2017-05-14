@@ -7,9 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <link rel="stylesheet" type="text/css" href="CSS/newStyle.css">
-
 </head>
 
 <body>
@@ -17,11 +15,11 @@
     <div id="main">
         <div id="menubar">
             New Website Welcome to our new website. Please have a look around, any feedback is much appreciated. Latest Update February 2013 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. January 2013 Lorem ipsum dolor sit
-
         </div>
 
         <div id="site_content">
             <div id="content">
+                <!-- left site board-->
                 <table id="tableBoard">
                     <tr>
                         <th></th>
@@ -171,7 +169,7 @@
 
             </div>
             <div id="content">
-
+                <!-- right site board-->
                 <table id="tableBoard2">
                     <tr>
                         <th></th>
@@ -321,6 +319,13 @@
                 </table>
 
             </div>
+
+            <div id="content">
+            </div>
+            <div id="content" style="background-color: yellow">
+                <a href="#" style="display: inline; padding-left: 100px;">Losuj statki</a>
+                <a href="#" style="display: inline; padding-left: 100px;">Ułóż sam statki</a>
+            </div>
             <div style="background-color: gray" id="content">
                 <div class="containeBroard">
                     <br />
@@ -333,30 +338,12 @@
                     <div style="color:white">
                         <br/> Komputer losuje statki, ja strzelam<br/> ilość: nazwa statku<br/> 1: pięciomasztowiec<br/> 1: czteromasztowiec<br/> 2: trzymasztowce<br/> 3: dwumasztowce<br/> 4: jednomasztowce
                         <br/>
-
-                        <div class="col-xs-6 col-sm-1">
-                            <div class="cellHitShip"></div>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-2">
-                            <p>- Trafiony</p>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-1">
-                            <div class="cellMiss"></div>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-2">
-                            <p>- Pudło</p>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-1">
-                            <div class="cellStopShip"></div>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-5">
-                            <p>- Obszar w którym statek nie może się znaleźć</p>
-                        </div>
+                        <div class="cellHitShip"></div>
+                        <p>- Trafiony</p>
+                        <div class="cellMiss"></div>
+                        <p>- Pudło</p>
+                        <div class="cellStopShip"></div>
+                        <p>- Obszar w którym statek nie może się znaleźć</p>
                     </div>
                     <br />
                     <div style="color:red; border-style: solid;border-width: 5px;">
@@ -364,13 +351,10 @@
                         <div id="winInfo"></div>
                     </div>
                 </div>
-
             </div>
             <div style="background-color: gray" id="content">
                 <div class="containeBroardPlayer">
-
                     <br />
-
                     <form action="javascript:playerController.checkShip(setShipCell, setLengthShip, verticalHorizontalShip);">
                         <select id="setLengthShip" class="selectpicker"> 
                         <option value="-1">Wybierz statek</option>
@@ -391,9 +375,6 @@
                     <br />
                     <input id="clearPlayerShips" type="button" value="Ułóż statki od nowa i rozpocznij grę od nowa." onclick="playerController.clearGame();" />
                     <br />
-
-
-
                     <div style="color:white">
                         <br/> Ja ustawiam statki, komputer strzela
                     </div>
@@ -406,12 +387,11 @@
                         <div id="winInfoPlayer"></div>
                         <div id="errorInfoPlayer"></div>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 
 
     <script src="JSScripts/Scripts/jquery-1.10.2.min.js"></script>
@@ -432,14 +412,9 @@
     <script src="View/shipView.js"></script>
     <script src="View/playerView.js"></script>
 
-
     <script src="Model/baseModel.js"></script>
     <script src="Controller/baseController.js"></script>
 
-
-
 </body>
-
-
 
 </html>
