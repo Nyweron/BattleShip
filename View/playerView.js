@@ -33,7 +33,7 @@ const playerView = {
 
     validateSelectListOptions: function(num, idName) {
         if (num === 0) {
-            document.getElementById(idName).style.border = "red solid 3px";
+            document.getElementById(idName).style.border = "#3B3738 solid 3px";
         } else {
             document.getElementById(idName).style.border = "";
         }

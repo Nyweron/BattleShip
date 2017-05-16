@@ -1,5 +1,10 @@
 html {
     height: 100%;
+    background-color: #FDF3E7;
+}
+
+body {
+    font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
 }
 
 * {
@@ -33,6 +38,15 @@ html {
     float: left;
 }
 
+#contentInfo {
+    width: 460px;
+    height: 280px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: left;
+}
+
 table,
 td,
 th {
@@ -45,10 +59,60 @@ th,
 td {
     width: 30px;
     height: 30px;
-    background-color: yellowgreen;
+    background-color: #7E8F7C;
 }
 
 #tableBoard,
 #tableBoard2 {
     margin: 10%;
+}
+
+
+/* Link Hover when player set ships */
+
+.box {
+    color: #C63D0F;
+    padding: #C63D0F;
+}
+
+.box:hover {
+    background: #C63D0F;
+    color: white;
+}
+
+.demo-1 {
+    position: relative;
+}
+
+.demo-1:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: top, left, right, bottom;
+    -moz-transition-property: top, left, right, bottom;
+    -ms-transition-property: top, left, right, bottom;
+    -o-transition-property: top, left, right, bottom;
+    transition-property: top, left, right, bottom;
+}
+
+.demo-1:hover:before,
+.demo-1:focus:before {
+    -webkit-transition-delay: .1s;
+    -moz-transition-delay: .1s;
+    -ms-transition-delay: .1s;
+    -o-transition-delay: .1s;
+    transition-delay: .1s;
+    border: #C63D0F solid 3px;
+    bottom: -7px;
+    left: -7px;
+    top: -7px;
+    right: -7px;
 }

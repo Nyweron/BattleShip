@@ -16,13 +16,13 @@ var shipView = {
     displayMsgHitOrMisst: function(val, divID) {
         if (val === 1) {
             document.getElementById(divID).innerHTML = "TRAFIONY";
-            document.getElementById(divID).style.color = "Green";
+            document.getElementById(divID).style.color = "#F99B2C";
         } else if (val === 2) {
             document.getElementById(divID).innerHTML = "ZATOPIŁEŚ, WSZYSTKIE STATKI! <br /> Koniec Gry <br /> Ilość strzałów: " + playerModel.allRememberedShoots.length;
-            document.getElementById(divID).style.color = "Green";
+            document.getElementById(divID).style.color = "#F99B2C";
         } else if (val === 3) {
             document.getElementById(divID).innerHTML = "ZATOPIONY!";
-            document.getElementById(divID).style.color = "Green";
+            document.getElementById(divID).style.color = "#F99B2C";
         } else if (val === 4) {
             document.getElementById(divID).innerHTML = "Oddałeś strzał już w tą komórkę. Wybierz inny cel!";
             document.getElementById(divID).style.color = "White";

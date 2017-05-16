@@ -14,7 +14,6 @@
 
     <div id="main">
         <div id="menubar">
-            New Website Welcome to our new website. Please have a look around, any feedback is much appreciated. Latest Update February 2013 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. January 2013 Lorem ipsum dolor sit
         </div>
 
         <div id="site_content">
@@ -322,15 +321,23 @@
 
             <div id="content">
             </div>
-            <div id="content" style="background-color: yellow">
-                <a onclick="playerController.clearGame();
+            <div id="content">
+
+                <nav>
+                    <a onclick="playerController.clearGame();
                             playerModel.generateShipLocations(); 
-                            playerController.setOptions(1)" style="display: inline; padding-left: 100px;">Losuj statki</form>
-                <a onclick="playerController.clearGame();
-                            playerController.setOptions(2)"
-                   style="display: inline; padding-left: 100px;">Ułóż sam statki</a>
+                            playerController.setOptions(1)" class="box demo-1" style="display: inline; margin-left: 20%;"> <span>Losuj statki</span>
+                    </a>
+
+                    <a onclick="playerController.clearGame();
+                            playerController.setOptions(2)" class="box demo-1" style="display: inline; margin-left: 20%;"> <span>Ułóż sam statki</span>
+                    </a>
+                </nav>
+
+
+
             </div>
-            <div style="background-color: gray" id="content">
+            <div style="background-color: #C63D0F" id="contentInfo">
                 <div class="containeBroard">
                     <br />
                     <form action="javascript:playerController.checkValueToFire(valueToFire);">
@@ -340,23 +347,22 @@
                     <br />
                     <br />
                     <div style="color:white">
-                        <br/> Komputer losuje statki, ja strzelam<br/> ilość: nazwa statku<br/> 1: pięciomasztowiec<br/> 1: czteromasztowiec<br/> 2: trzymasztowce<br/> 3: dwumasztowce<br/> 4: jednomasztowce
-                        <br/>
+                        <br/> Komputer losuje statki, ja strzelam<br/>
                         <div class="cellHitShip"></div>
-                        <p>- Trafiony</p>
+                        <p></p>
                         <div class="cellMiss"></div>
-                        <p>- Pudło</p>
+                        <p></p>
                         <div class="cellStopShip"></div>
-                        <p>- Obszar w którym statek nie może się znaleźć</p>
+                        <p></p>
                     </div>
                     <br />
-                    <div style="color:red; border-style: solid;border-width: 5px;">
+                    <div style="color:#3B3738; border-style: solid;border-width: 5px;">
                         <div id="messageArea"></div>
                         <div id="winInfo"></div>
                     </div>
                 </div>
             </div>
-            <div style="background-color: gray" id="content" name="playerOptions">
+            <div style="background-color: #C63D0F" id="contentInfo" name="playerOptions">
                 <div id="containerBoardPlayer">
                     <br />
                     <form action="javascript:playerController.checkShip(setShipCell, setLengthShip, verticalHorizontalShip);">
@@ -386,7 +392,7 @@
                     <br />
                     <br />
                     <br />
-                    <div style="color:red; border-style: solid;border-width: 5px;">
+                    <div style="color:#3B3738; border-style: solid;border-width: 5px;">
                         <div id="messageAreaPlayer"></div>
                         <div id="winInfoPlayer"></div>
                         <div id="errorInfoPlayer"></div>
