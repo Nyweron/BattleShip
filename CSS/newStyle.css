@@ -1,6 +1,7 @@
 html {
     height: 100%;
     background-color: #FDF3E7;
+    line-height: 22px;
 }
 
 body {
@@ -40,7 +41,7 @@ body {
 
 #contentInfo {
     width: 460px;
-    height: 280px;
+    height: 336px;
     margin-bottom: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -76,6 +77,10 @@ td {
 }
 
 .box:hover {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     background: #C63D0F;
     color: white;
 }
