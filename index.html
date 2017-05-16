@@ -323,8 +323,12 @@
             <div id="content">
             </div>
             <div id="content" style="background-color: yellow">
-                <a onclick="playerController.clearGame(); playerModel.generateShipLocations(); playerModel.setOptions(1)" style="display: inline; padding-left: 100px;">Losuj statki</form>
-                <a onclick="playerController.clearGame(); playerModel.setOptions(2)" style="display: inline; padding-left: 100px;">Ułóż sam statki</a>
+                <a onclick="playerController.clearGame();
+                            playerModel.generateShipLocations(); 
+                            playerController.setOptions(1)" style="display: inline; padding-left: 100px;">Losuj statki</form>
+                <a onclick="playerController.clearGame();
+                            playerController.setOptions(2)"
+                   style="display: inline; padding-left: 100px;">Ułóż sam statki</a>
             </div>
             <div style="background-color: gray" id="content">
                 <div class="containeBroard">
@@ -418,3 +422,11 @@
 </body>
 
 </html>
+
+
+<script>
+    window.onload = function() {
+        playerModel.generateShipLocations();
+        playerController.setOptions(1);
+    }
+</script>

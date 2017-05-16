@@ -217,6 +217,7 @@ const playerController = {
             playerModel.blockBtnSinceShipWillBeSet("fireBtn", 0); //1 - false, 0 -true
             playerModel.blockBtnSinceShipWillBeSet("valueToFire", 0);
             playerModel.blockBtnSinceShipWillBeSet("setShipBtn", 0);
+            computerGenerateFireView.displayMsgHitOrMisst(2, "messageArea");
         }
     },
 
@@ -231,6 +232,18 @@ const playerController = {
             console.log("computerTargetToFire: " + computerTargetToFire);
             let targ = computerGenerateFireModel.checkComputerHitPlayerShip(computerTargetToFire);
             computerGenerateFireView.enemyFireYourBoard(1, targ, "tableBoard2");
+        }
+    },
+
+    setOptions: function(i) {
+        if (i === 1) {
+            document.getElementById("containerBoardPlayer").style.visibility = 'hidden';
+            this.unBlockBtnWhenAllShipsAreSet();
+
+
+
+        } else if (i === 2) {
+            document.getElementById("containerBoardPlayer").style.visibility = 'visible';
         }
     },
 
