@@ -340,7 +340,7 @@
             <div style="background-color: #C63D0F" id="contentInfo">
                 <div class="containeBroard">
                     <br />
-                    <input type="text" name="value" placeholder="A1" id="valueToFire" maxlength="2">
+                    <input style="width:50px;" type="text" name="value" placeholder="A1" id="valueToFire" maxlength="2">
                     <div style="display:inline-block;">
                         <button type="button" onclick="javascript:playerController.checkValueToFire(valueToFire);" value="Ognia!" id="fireBtn">Ognia!</button>
                     </div>
@@ -366,23 +366,23 @@
             <div style="background-color: #C63D0F" id="contentInfo" name="playerOptions">
                 <div id="containerBoardPlayer">
                     <br />
-                    <form action="javascript:playerController.checkShip(setShipCell, setLengthShip, verticalHorizontalShip);">
-                        <select id="setLengthShip" class="selectpicker"> 
-                        <option value="-1">Wybierz statek</option>
-                        <option value="1">1 - masztowiec</option>
-                        <option value="2">2 - masztowiec</option>
-                        <option value="3">3 - masztowiec</option>
-                        <option value="4">4 - masztowiec</option>
-                        <option value="5">5 - masztowiec</option>
-                    </select>
-                        <select id="verticalHorizontalShip" class="selectpicker"> 
-                        <option value="-1">Wybierz ułożenie</option>
-                        <option value="0">Pionowo |</option>
-                        <option value="1">Poziomo -</option>
-                    </select>
-                        <input type="text" name="value" placeholder="A1" id="setShipCell" maxlength="2">
-                        <input type="submit" value="Usaw statek" id="setShipBtn">
-                    </form>
+                    <select id="setLengthShip" class="selectpicker"> 
+                            <option value="-1">Wybierz statek</option>
+                            <option value="1">1 - masztowiec</option>
+                            <option value="2">2 - masztowiec</option>
+                            <option value="3">3 - masztowiec</option>
+                            <option value="4">4 - masztowiec</option>
+                            <option value="5">5 - masztowiec</option>
+                        </select>
+                    <select id="verticalHorizontalShip" class="selectpicker"> 
+                            <option value="-1">Wybierz ułożenie</option>
+                            <option value="0">Pionowo |</option>
+                            <option value="1">Poziomo -</option>
+                        </select>
+                    <input style="width:50px;" type="text" name="value" placeholder="A1" id="setShipCell" maxlength="2">
+                    <button type="submit" value="Usaw statek" id="setShipBtn" onclick="javascript:playerController.checkShip(setShipCell, setLengthShip, verticalHorizontalShip);">Ustaw statek</button>
+
+                    <br />
                     <br />
                     <input id="clearPlayerShips" type="button" value="Ułóż statki od nowa i rozpocznij grę od nowa." onclick="playerController.clearGame();" />
                     <br />
