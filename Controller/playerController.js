@@ -27,6 +27,7 @@ const playerController = {
 
     //Check value which player introduce, if value is correct then display info on board
     checkValueToFire: function(valueToFire) {
+
         let fireVal = document.getElementById(valueToFire.id);
 
         if (this.checkLengthFire(fireVal)) {
@@ -47,6 +48,7 @@ const playerController = {
 
         this.computerFireInPlayerShip();
         this.checkDidComputerDestroyAllPlayerShips();
+
     },
 
     //Check ship which player try set on board

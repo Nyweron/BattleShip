@@ -340,12 +340,14 @@
             <div style="background-color: #C63D0F" id="contentInfo">
                 <div class="containeBroard">
                     <br />
-                    <form action="javascript:playerController.checkValueToFire(valueToFire);">
-                        <input type="text" name="value" placeholder="A1" id="valueToFire" maxlength="2">
-                        <input type="submit" value="Ognia!" id="fireBtn">
-                    </form>
+                    <input type="text" name="value" placeholder="A1" id="valueToFire" maxlength="2">
+                    <div style="display:inline-block;">
+                        <button type="button" onclick="javascript:playerController.checkValueToFire(valueToFire);" value="Ognia!" id="fireBtn">Ognia!</button>
+                    </div>
                     <br />
                     <br />
+
+                    <p id="infoFireBtn" style="display:inline-block;color:#F99B2C">TEST</p>
                     <div style="color:white">
                         <div class="cellHitShip"></div>
                         <p></p>
@@ -400,7 +402,8 @@
     </div>
 
 
-    <script src="JSScripts/Scripts/jquery-1.10.2.min.js"></script>
+    <!--<script src="JSScripts/Scripts/jquery-1.10.2.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="JSScripts/bootstrap/tether.min.js"></script>
     <script src="JSScripts/bootstrap/bootstrap.min.js"></script>
 
